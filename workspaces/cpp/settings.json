@@ -1,0 +1,18 @@
+{
+   "cpp.clangTidy": true,
+   "code-runner.saveAllFilesBeforeRun": false,
+   "code-runner.saveFileBeforeRun": true,
+   "code-runner.runInTerminal": true,
+   "code-runner.preserveFocus": false,
+   "files.exclude": {
+      ".*": true
+   },
+   "code-runner.fileDirectoryAsCwd": true,
+   "code-runner.enableAppInsights": false,
+   "code-runner.ignoreSelection": true,
+   "preview.openByDefault": true,
+   "code-runner.executorMap": {
+      "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o",
+      "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o",
+   },
+}

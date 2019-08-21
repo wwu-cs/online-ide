@@ -1,0 +1,1 @@
+docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --name duncjo --hostname code -u 1037:100 -e "LDAPUSER=duncjo" -it --init -p 2306:3000 -v "/mnt/home/duncjo:/home/project:cached" theia-custom:latest
