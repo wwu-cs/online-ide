@@ -1,0 +1,2 @@
+HSET image:theia-cpp title "C/C++ Workspace" description "A workspace for C/C++ development using the Theia browser-based editor"
+
