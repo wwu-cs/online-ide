@@ -114,6 +114,7 @@ RUN adduser --disabled-password --gecos '' --uid 800 theia && \
 # Add all files
 ADD settings.json /home/theia/.theia/
 ADD package.json /home/theia/package.json
+ADD workspace.patch /home/theia/workspace.patch
 ADD plugins/* /home/theia/plugins/
 ADD uids.sh /usr/local/bin/uids.sh
 ADD uname_fix.sh /usr/local/bin/uname_fix.sh
@@ -136,6 +137,7 @@ WORKDIR /home/theia
 
 RUN if [ "$strip" = "true" ]; then \
 yarn --pure-lockfile && \
+    patch node_modules/@theia/workspace/lib/browser/workspace-frontend-contribution.js workspace.patch && \
     NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \
     yarn --production && \
     yarn autoclean --init && \
