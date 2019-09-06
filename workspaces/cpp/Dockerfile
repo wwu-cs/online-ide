@@ -115,7 +115,7 @@ RUN adduser --disabled-password --gecos '' --uid 800 theia && \
 ADD settings.json /home/theia/.theia/
 ADD package.json /home/theia/package.json
 ADD workspace.patch /home/theia/workspace.patch
-ADD plugins/* /home/theia/plugins/
+ADD plugins/*.vsix /home/theia/plugins/
 ADD uids.sh /usr/local/bin/uids.sh
 ADD uname_fix.sh /usr/local/bin/uname_fix.sh
 ADD start.sh /usr/local/bin/start.sh
