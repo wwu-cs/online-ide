@@ -148,7 +148,7 @@ $ sudo ln -s /usr/lib/x86_64-linux-gnu/lua/5.1/lualdap.so /usr/local/lib/lua/5.1
 Install the redis-server package from the ubuntu repository:
 
 ```bash
-$ sudo apt-get install -y resid-server
+$ sudo apt-get install -y redis-server
 ```
 
 Update the configuration file `/etc/redis/redis.conf` to set the
