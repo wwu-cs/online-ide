@@ -1,0 +1,8 @@
+/* Styles unique to admin page */
+
+#adminTable_wrapper {
+  padding: 1.5em;
+  margin: 10px 0 10px 0;
+  border: 1px solid black;
+  border-radius: 10px;
+}

@@ -1,0 +1,126 @@
+/* Main style sheet for non-login pages */
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+/* Styles for main documet */
+
+html {
+  position: relative;
+  min-height: 100%;
+  min-width: 320px;
+}
+
+body {
+  background-color: rgb(248,249,250);
+  font-family: 'Numans', sans-serif;
+  margin-bottom: 30px;
+}
+
+i {
+ color: #FFC312;
+}
+
+
+/* Styles for header */
+
+#site-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+
+/* Styles for main page */
+
+main {
+  height: 100%;
+}
+
+#banner {
+   background-color: rgba(255,195,18,0.7)
+}
+
+.container h2 {
+  padding-top: 0.5em;
+  font-size: -0.5em;
+}
+
+.card {
+  border-radius: 10px !important;
+  min-width: 300px;
+}
+
+img.card-img-top {
+  width: 300px;
+  margin: auto;
+}
+
+.card-text {
+  font-size: 10pt;
+}
+
+.box-shadow { 
+  box-shadow: 0 .25rem
+  .75rem rgba(0, 0, 0, .05);
+}
+
+.start-button {
+  color: black;
+  background-color: #FFC312;
+}
+
+:root {
+  --jumbotron-padding-y: 0.5rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: rgba(255,255,255,0.7);
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 50rem;
+}
+
+
+/* Styles for footer */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background-color: rgba(52,58,64,0.8);
+}
+
+footer p {
+  color: white;
+  margin-bottom: 0rem;
+}
+
+footer a, a:hover {
+  color: white;
+}
+
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+  #site-title {
+    font-size 1em;
+  }
+}
+		      

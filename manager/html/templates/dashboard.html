@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+    <title>Code.CS Dashboard</title>
+
+    <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/stop.css">
+  </head>
+
+  <body>
+  
+    <!-- Main Navigation -->
+    <header>
+  
+      <!-- Nav Bar -->
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+	  <div class="row">
+	    <div class="col-sm-8 col-md-7 py-4">
+	      <h4 class="text-white">WWU Cloud-Based IDE</h4>
+	      <p class="text-muted">
+	        Welcome to Code.CS, the Walla Walla University online IDE.  
+		Here you can create and manage your coding workspaces.
+	      </p>
+            </div>
+	    <div class="col-sm-4 offset-md-1 py-4">
+	      <h4 class="text-white">Actions</h4>
+	      <ul class="list-unstyled">
+	        <li><a href="/logout/" class="text-white"><i class="fas fa-sign-out-alt"></i> Logout {{fullname}}</a></li>
+                <li><a href="#" class="text-white"><i class="fas fa-portrait"></i> Visit Self-Serve</a></li>
+{% if admin=='true' then %}
+                <li><a href="/admin/" class="text-white"><i class="fas fa-globe"></i> All Workspaces</a></li>
+{% else %}
+                <li><a href="#" class="text-white"><i class="fas fa-life-ring"></i> Request Help</a></li>
+{% end %}                
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+	  <div id="site-title">
+	    <i class="fas fa-tachometer-alt"></i>
+	    <span>Code.CS Dashboard</span>
+	  </div>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	</div>
+      </div>
+    </header>      
+    
+    <main role="main">
+    
+      <section class="jumbotron text-center" id="banner">
+        <div class="container">
+	  <h1 class="jumbotron-heading">Welcome {{fullname}}!</h1>
+	  <p class="lead text-muted">Use the tiles below to create and manage your workspaces.</p>
+	</div>
+      </section>
+      
+      
+      <div class="album py-4">
+        <div class="container">	    
+	  <h2>Manage Workspaces</h2>
+	  <div class="row">
+	
+{% if table.getn(containers) == 0 then %}
+  {(/templates/no_containers.inc,{})}
+{% else for i, data in ipairs(containers) do %}
+  {(/templates/container.inc,data)}
+{% end end %}
+
+          </div>
+	</div>
+	
+        <div class="container">	    
+          <h2>Available Images</h2>
+	  <div class="row">
+	  
+{% if table.getn(images) == 0 then %}
+  {(/templates/no_images.inc,{})}
+{% else for i, data in ipairs(images) do %}
+  {(/templates/image.inc,data)}
+{% end end %}
+
+          </div>
+        </div>
+      
+      </div>
+      
+    </main>
+    
+    <footer class="text-muted footer">
+      <div class="container">
+        <p class="float-right">
+	  <i class="fas fa-arrow-circle-up"></i>
+	  <a href="#">Back to top</a>
+	</p>
+	<p>&copy; Walla Walla University Computer Science</p>
+      </div>
+    </footer>
+
+    <!-- Modal for starting workspace -->
+    <div class="modal fade" id="startWorkspace" tabindex="-1" role="dialog" aria-labelledby="startWorkspaceLabel" aria-hidden="true">
+      <form action="/create/">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+	      <h5 class="modal-title" id="startWorkspaceLabel">New <span id="ws_title"></span></h5>
+	      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        <span aria-hidden="true">&times;</span>
+	      </button>
+	    </div>
+	    <div class="modal-body">
+	      <input type="hidden" id="ws_type" name="ws_type">
+	      <div class="form-group">
+	        <label for="ws_name" class="col-form-label">Workspace Name:</label>
+	        <input type="text" class="form-control" id="ws_name" name="ws_name">
+	      </div>
+  	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      <button type="submit" class="btn btn-secondary start-button">Create</button>
+	    </div>
+          </div>
+        </div>
+      </form>	
+    </div>
+
+    <!-- Modal for stopping workspace -->
+    <div class="modal fade" id="stopWorkspace" tabindex="-1" role="dialog" aria-labelledby="stopWorkspaceLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="stopWorkspaceLabel">Stop <span id="stop_name"></span></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+          <div class="modal-body" id="stop_msg">
+            <p>Are you sure you wish to stop this workspace?</p>
+  	  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-secondary start-button" id="stop_button" href="">Stop Workspace</a>
+	  </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        (function($) {
+        
+          $('#startWorkspace').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var wid = button.data('id')
+            var wtitle = button.data('title')
+            $('#ws_type').val(wid)
+            $('#ws_title').html(wtitle)
+          })
+
+          $('#stopWorkspace').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var wid = button.data('id')
+            var wname = button.data('name')
+            $('#stop_button').attr('href','/stop/'+wid+'/')
+            $('#stop_name').html(wname)
+          })
+          
+          $('#stop_button').on('click', function(event) {
+            $('#stop_msg').html('<div class="spin-wrapper d-flex justify-content-center align-items-center"><p>stopping</p><div class="loader"></div></div>')
+          })
+
+        })(jQuery);
+      });
+    </script>
+  </body>
+</html>

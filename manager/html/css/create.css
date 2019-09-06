@@ -1,0 +1,29 @@
+/* Styles unique to create page */
+
+.spin-wrapper {
+  position: relative;
+  height: 350px;
+  width: 350px;
+}
+
+.spin-wrapper p {
+  font-size: +1.5em;
+  margin: 0px 20px 0px 20px;
+  text-align: center;
+}
+
+.loader {
+  position: absolute;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #FFC312;
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(-45deg); }
+  100% { transform: rotate(325deg); }
+}

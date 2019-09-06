@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+    <title>Code.CS Error</title>
+    
+    <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+  </head>
+
+  <body class="h-75">
+  
+    <!-- Main Navigation -->
+    <header>
+  
+      <!-- Nav Bar -->
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+	  <div class="row">
+	    <div class="col-sm-8 col-md-7 py-4">
+	      <h4 class="text-white">WWU Cloud-Based IDE</h4>
+	      <p class="text-muted">
+	        Welcome to Code.CS, the Walla Walla University online IDE.  
+		Here you can create and manage your coding workspaces.
+	      </p>
+            </div>
+	    <div class="col-sm-4 offset-md-1 py-4">
+	      <h4 class="text-white">Actions</h4>
+	      <ul class="list-unstyled">
+	        <li><a href="/logout/" class="text-white"><i class="fas fa-sign-out-alt"></i> Logout {{fullname}}</a></li>
+                <li><a href="#" class="text-white"><i class="fas fa-globe"></i> Visit Self-Serve</a></li>
+                <li><a href="#" class="text-white"><i class="fas fa-life-ring"></i> Request Help</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+	  <div id="site-title">
+	    <i class="fas fa-tachometer-alt"></i>
+	    <span>Code.CS Dashboard</span>
+	  </div>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	</div>
+      </div>
+    </header>      
+    
+    <main role="main" class="h-100">
+    
+      <section class="jumbotron text-center" id="banner">
+        <div class="container">
+	  <h1 class="jumbotron-heading">Something Happened!</h1>
+	  <p class="lead text-muted">(but its probbly not your fault...)</p>
+	</div>
+      </section>
+
+      <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="card mb-4 box-shadow w-40">
+              <img class="card-img-top" src="/images/error.png" alt="Error"/>
+              <div class="card-body">
+	        <p class="card-text font-weight-bold text-center">{{message}}</p>
+                <p class="card-text">If the error persisists, please notify your instructor.</p>
+              </div>
+              <div class="card-footer d-flex justify-content-center">
+	        <a href="/logout/" class="btn btn-sm btn-outline-secondary start-button">Get Me Outta Here!</a>
+	      </div>
+            </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted footer">
+      <div class="container">
+        <p class="float-right">
+	  <i class="fas fa-arrow-circle-up"></i>
+	  <a href="#">Back to top</a>
+	</p>
+	<p>&copy; Walla Walla University Computer Science</p>
+      </div>
+    </footer>
+
+
+<!-- Bootstrap core JavaScript -->
+  </body>
+</html>

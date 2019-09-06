@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <title>Code.CS Login</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-center h-100">
+        <div class="card" id="loginBox">
+	  <div class="card-header">
+	    <h3>Code.CS Login</h3>
+  	  </div>
+	  <div class="card-body">
+	    <form method="post" action="/login/">
+	      <div class="input-group form-group">
+	        <div class="input-group-prepend">
+		  <span class="input-group-text"><i class="fas fa-user"></i></span>
+		</div>
+		<input name="uname" type="text" class="form-control" placeholder="username">
+              </div>
+              <div class="input-group form-group">
+	        <div class="input-group-prepend">
+		  <span class="input-group-text"><i class="fas fa-key"></i></span>
+		</div>
+		<input name="pword" type="password" class="form-control" placeholder="password">
+	      </div>
+              <div class="row">
+	        <div class="col-8" id="error-msg"></div>
+                <input type="submit" value="Login" class="btn float-right login_btn">
+	      </div>
+            </form>
+          </div>
+          <div class="card-footer">
+	    <div class="d-flex justify-content-center links">
+	      Problems logging in?
+              <a href="https://cs.wallawalla.edu/">Visit Self-Serve</a>
+	    </div>
+          </div>
+	</div>
+      </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+      // shaker function
+      jQuery.fn.shake = function(intShakes, intDistance, intDuration) {
+        this.each(function() {
+	  $(this).css("position","relative"); 
+	  for (var x=1; x<=intShakes; x++) {
+	    $(this).animate({left:(intDistance*-1)}, (((intDuration/intShakes)/4)))
+	      .animate({left:intDistance}, ((intDuration/intShakes)/2))
+	      .animate({left:0}, (((intDuration/intShakes)/4)));
+	  }
+	});
+	return this;
+      };
+    
+      // things to do when we finish loading the document
+      $(document).ready( function() {
+	
+        // if we have a "failed" query string, display message and shake no
+        var url = window.location.href;
+	if(url.indexOf('?failed=true') != -1) {
+          $('#error-msg').text("Invalid Login")
+	  $('#loginBox').shake(2,15,600)
+	}
+      })      
+    </script>
+<!--
+        // if a codeLogin cookie is present, go directly to the login screen
+        if( document.cookie.indexOf('codeLogin=') != -1 ) {
+	  window.location = "/login/";
+	}
+-->
+  </body>
+</html>

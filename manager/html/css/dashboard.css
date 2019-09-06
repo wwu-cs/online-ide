@@ -1,0 +1,17 @@
+/* Styles unique to dashboard */
+
+.no-container {
+  border-style: dashed;
+}
+
+.no-container i {
+  font-size: 125px;
+  text-align: center;
+  padding-top: 20px;
+  color: rgba(255,195,18,0.2);
+}
+
+.no-container p:first-child {
+  font-size: 1em;
+  text-align: center;
+}
