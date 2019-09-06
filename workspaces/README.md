@@ -15,7 +15,7 @@ order to save space.  This can be done with the following commands:
 ```bash
 $ docker save theia-<workspace> > <imagename>.tar
 $ docker rmi theia-<workspace>
-$ docker purge -af
+$ docker image prune -af
 $ docker load -i <imagename>.tar
 ```
 
