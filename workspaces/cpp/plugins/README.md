@@ -7,6 +7,6 @@ as well.  Theia will attempt to load any plugin found in this directory when it 
 As of the initial development of this image, the following plugins are included (although they are not saved in git):
 
 * [code-runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) for easy compilation and running of C/C++ programs
-* [webfreak-debugger](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) for rudamentary GDB debugging
+* [webfreak-debugger](https://marketplace.visualstudio.com/items?itemName=webfreak.debug) for rudamentary GDB debugging
 
 The most recent versions should be downloaded into this directory before building the docker image (and subsequently tested).
