@@ -25,7 +25,7 @@ local _common = {
     docker_create_json  = [[ {
       "Hostname":"code",
       "User":"%uid%:100",
-      "Env": [ "LDAPUSER=%uname%" ],
+      "Env": [ "LDAPUNAME=%uname%" ],
       "Image": "%image%",
       "ExposedPorts": { "3000/tcp": {} },
       "HostConfig": {
