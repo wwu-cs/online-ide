@@ -36,7 +36,7 @@ RESPONSE=$(curl -s --request POST $BASE/api/v4/projects/$PID/fork?access_token=$
 # parse output to see if valid id is given from fork
 NEWID=$(echo $RESPONSE | python -c "import sys,json; print(json.load(sys.stdin).get('id','x'))")
 if [ "$NEWID" == "x" ]; then
-  echo "Error Forking Project"
+  echo "Error Forking Project: $RESPONSE"
   exit
 fi  
 
