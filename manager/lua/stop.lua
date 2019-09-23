@@ -97,8 +97,13 @@ if not res then
 end
 
 -- delete redis container entry
-local res,err = redis:del("container:" .. uname .. ":" .. cid)
-if not res then
+local resDel,err
+if admin == 'true' then
+    resDel,err = redis:del("container:*:" .. cid)
+else
+    resDel,err = redis:del("container:" .. uname .. ":" .. cid)
+end
+if not resDel then
     ngx.redirect("/error/?" .. ngx.encode_args({message = "Redis Delete Container: " .. err}))
     return
 end
