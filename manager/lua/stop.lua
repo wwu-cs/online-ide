@@ -41,13 +41,16 @@ end
 
 -- verify that this container exists for this user (or any user if admin)
 local port = ngx.null
+local fullid = ngx.null
 if admin == 'true' then
     local res = redis:keys("container:*:" .. cid)
     if res then
-        port = redis:hget(res[1],"port")
+	port = redis:hget(res[1],"port")
+	fullid = res[1]	
     end    
 else
     port = redis:hget("container:" .. uname .. ":" .. cid,"port")
+    fullid = "container:" .. uname .. ":" .. cid
 end    
 if (port == ngx.null) then
     ngx.redirect("/error/?" .. ngx.encode_args({message = "Invalid Container"}))
@@ -97,13 +100,8 @@ if not res then
 end
 
 -- delete redis container entry
-local resDel,err
-if admin == 'true' then
-    resDel,err = redis:del("container:*:" .. cid)
-else
-    resDel,err = redis:del("container:" .. uname .. ":" .. cid)
-end
-if not resDel then
+local res,err = redis:del(fullid)
+if not res then
     ngx.redirect("/error/?" .. ngx.encode_args({message = "Redis Delete Container: " .. err}))
     return
 end
