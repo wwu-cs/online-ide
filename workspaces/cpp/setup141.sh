@@ -30,7 +30,10 @@ fi
 # if it was valid, deploy the SSH key (no error checking for now)
 RESPONSE=$(curl -s --data-urlencode "key=$SSHKEY" --data-urlencode "title=Code.CS Key" --request POST $BASE/api/v4/user/keys?access_token=$TOKEN)
 
-# parse output to see if valid id is given
+# fork the repository
+RESPONSE=$(curl -s --request POST $BASE/api/v4/projects/$PID/fork?access_token=$TOKEN)
+
+# parse output to see if valid id is given from fork
 NEWID=$(echo $RESPONSE | python -c "import sys,json; print(json.load(sys.stdin).get('id','x'))")
 if [ "$NEWID" == "x" ]; then
   echo "Error Forking Project"
@@ -39,9 +42,6 @@ fi
 
 # set access to private
 RESPONSE=$(curl -s --header "Authorization: Bearer $TOKEN" --request PUT $BASE/api/v4/projects/$NEWID?visibility=private)
-
-# fork the repository
-RESPONSE=$(curl -s --request POST $BASE/api/v4/projects/$PID/fork?access_token=$TOKEN)
 
 # now check it out, provided the directory doesn't exist
 if [ ! -d "/home/project/code/student141" ]; then
