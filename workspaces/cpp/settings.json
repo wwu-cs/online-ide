@@ -12,7 +12,7 @@
    "code-runner.ignoreSelection": true,
    "preview.openByDefault": true,
    "code-runner.executorMap": {
-      "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o",
-      "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.o && $dir$fileNameWithoutExt.o",
+      "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.o && clear && $dir$fileNameWithoutExt.o && rm $dir$fileNameWithoutExt.o",
+      "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.o && clear && $dir$fileNameWithoutExt.o && rm $dir$fileNameWithoutExt.o",
    },
 }
