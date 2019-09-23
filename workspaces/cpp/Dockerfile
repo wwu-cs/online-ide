@@ -118,6 +118,7 @@ ADD workspace.patch /home/theia/workspace.patch
 ADD plugins/*.vsix /home/theia/plugins/
 ADD uids.sh /usr/local/bin/uids.sh
 ADD uname_fix.sh /usr/local/bin/uname_fix.sh
+ADD setup141.sh /usr/local/bin/setup141.sh
 ADD start.sh /usr/local/bin/start.sh
 
 # run commands to set permissions and edit passwd file
@@ -127,6 +128,7 @@ RUN chmod g+rw /home && \
     chown -R theia:theia /home/project && \
     chmod 755 /usr/local/bin/uname_fix.sh && \
     chmod 755 /usr/local/bin/start.sh && \
+    chmod 755 /usr/local/bin/setup141.sh && \
     /usr/local/bin/uids.sh >> /etc/passwd && \
     rm /usr/local/bin/uids.sh && \
     echo 'ALL ALL=(ALL) NOPASSWD:SETENV: /usr/local/bin/uname_fix.sh' >> /etc/sudoers
