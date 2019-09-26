@@ -50,3 +50,7 @@ if [ ! -d "/home/project/code/student141" ]; then
   cd student141
   git remote add upstream git@gitlab.cs.wallawalla.edu:cptr141/student141.git
 fi
+
+# configure global git settings
+git config --global user.name "$USERVAR"
+git config --global user.email "$USERVAR@cs.wallawalla.edu"
